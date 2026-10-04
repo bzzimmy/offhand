@@ -11,4 +11,10 @@ struct TargetOptions: ParsableArguments {
         guard let app else { return nil }
         return try AppResolver.resolve(app, in: AppCatalog.running())
     }
+
+    /// Resolves `--app` against running apps, failing when it was not given.
+    func requireRunningApp() throws -> AppInfo {
+        guard let app = try resolveRunningApp() else { throw ValidationError("Missing --app.") }
+        return app
+    }
 }

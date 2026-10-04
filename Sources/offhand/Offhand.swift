@@ -8,6 +8,7 @@ struct Offhand: ParsableCommand {
         subcommands: [
             AppsCommand.self,
             WindowsCommand.self,
+            StateCommand.self,
         ]
     )
 }
